@@ -24,4 +24,3 @@ class parseGeoPoint extends parseRestClient{
 
 }
 
-?>

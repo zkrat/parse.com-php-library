@@ -1,0 +1,19 @@
+{
+    "name": "zkrat/parse.com-php-library",
+    "description": "PHP parse.com API library",
+    "license": "GNU2",
+    "minimum-stability": "dev",
+    "require": { },
+    "autoload": {
+        "classmap": ["parseObject.php",
+            "parseQuery.php",
+            "parseUser.php",
+            "parseFile.php",
+            "parsePush.php",
+            "parseGeoPoint.php",
+            "parseACL.php",
+            "parseCloud.php",
+            "README.md"
+        ]
+    }
+}

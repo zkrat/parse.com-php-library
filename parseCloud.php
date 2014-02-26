@@ -39,5 +39,3 @@ class parseCloud extends parseRestClient{
 		}
 	}
 }
-
-?>

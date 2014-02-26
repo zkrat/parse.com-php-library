@@ -84,4 +84,3 @@ class parseObject extends parseRestClient{
 	}
 }
 
-?>

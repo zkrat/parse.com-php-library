@@ -90,4 +90,3 @@ class parsePush extends parseRestClient{
 	}
 }
 
-?>

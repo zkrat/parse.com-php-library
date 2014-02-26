@@ -46,4 +46,3 @@ class parseFile extends parseRestClient{
 
 }
 
-?>
