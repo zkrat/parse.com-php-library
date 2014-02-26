@@ -24,7 +24,7 @@ class parsePush extends parseRestClient{
 	
 	public function __set($name,$value){
 		if($name != 'channel' || $name != 'channels' || $name != 'expiration_time' || $name != 'expiration_interval' || $name != 'type' || $name != 'data' || $name != 'where'){
-			$this->data[$name] = $value;
+			$this->dataStorage[$name] = $value;
 		}
 	}
 
@@ -44,7 +44,7 @@ class parsePush extends parseRestClient{
 
 		}
 		else{
-			if(count($this->data) > 0){
+			if(count($this->dataStorage) > 0){
 				if($this->channel == '' && empty($this->channels) && empty($this->where)){
 					$this->throwError('A push Channel must be set when not using Advanced Targeting');
 				}
@@ -52,7 +52,7 @@ class parsePush extends parseRestClient{
 					'method' => 'POST',
 					'requestUrl' => 'push',
 					'data' => array(
-						'data' => $this->data
+						'data' => $this->dataStorage
 					)
 				);
 				

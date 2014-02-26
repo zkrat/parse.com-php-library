@@ -5,7 +5,7 @@ class parseUser extends parseRestClient{
 	public $authData;
 
 	public function __set($name,$value){
-		$this->data[$name] = $value;
+		$this->dataStorage[$name] = $value;
 	}
 
 	public function signup($username='',$password=''){
@@ -14,11 +14,11 @@ class parseUser extends parseRestClient{
 			$this->password = $password;
 		}
 
-		if($this->data['username'] != '' && $this->data['password'] != ''){
+		if($this->dataStorage['username'] != '' && $this->dataStorage['password'] != ''){
 			$request = $this->request(array(
 				'method' => 'POST',
 	    		'requestUrl' => 'users',
-				'data' => $this->data
+				'data' => $this->dataStorage
 			));
 			
 	    	return $request;
@@ -31,13 +31,13 @@ class parseUser extends parseRestClient{
 	}
 
 	public function login(){
-		if(!empty($this->data['username']) || !empty($this->data['password'])	){
+		if(!empty($this->dataStorage['username']) || !empty($this->dataStorage['password'])	){
 			$request = $this->request(array(
 				'method' => 'GET',
 	    		'requestUrl' => 'login',
 		    	'data' => array(
-		    		'password' => $this->data['password'],
-		    		'username' => $this->data['username']
+		    		'password' => $this->dataStorage['password'],
+		    		'username' => $this->dataStorage['username']
 		    	)
 			));
 			
@@ -88,7 +88,7 @@ public function socialLogin(){
 				'method' => 'PUT',
 				'requestUrl' => 'users/'.$objectId,
 	    		'sessionToken' => $sessionToken,
-				'data' => $this->data
+				'data' => $this->dataStorage
 			));
 			
 	    	return $request;			
@@ -170,7 +170,7 @@ public function socialLogin(){
 			'method' => 'POST',
 			'requestUrl' => 'requestPasswordReset',
 			'email' => $email,
-			'data' => $this->data
+			'data' => $this->dataStorage
 			));
 
 			return $request;

@@ -17,16 +17,16 @@ class parseObject extends parseRestClient{
 
 	public function __set($name,$value){
 		if($name != '_className'){
-			$this->data[$name] = $value;
+			$this->dataStorage[$name] = $value;
 		}
 	}
 
 	public function save(){
-		if(count($this->data) > 0 && $this->_className != ''){
+		if(count($this->dataStorage) > 0 && $this->_className != ''){
 			$request = $this->request(array(
 				'method' => 'POST',
 				'requestUrl' => 'classes/'.$this->_className,
-				'data' => $this->data,
+				'data' => $this->dataStorage,
 			));
 			return $request;
 		}
@@ -52,7 +52,7 @@ class parseObject extends parseRestClient{
 			$request = $this->request(array(
 				'method' => 'PUT',
 				'requestUrl' => 'classes/'.$this->_className.'/'.$id,
-				'data' => $this->data,
+				'data' => $this->dataStorage,
 			));
 
 			return $request;
@@ -60,11 +60,11 @@ class parseObject extends parseRestClient{
 	}
 
 	public function increment($field,$amount){
-		$this->data[$field] = $this->dataType('increment', $amount);
+		$this->dataStorage[$field] = $this->dataType('increment', $amount);
 	}
 
 	public function decrement($id){
-		$this->data[$field] = $this->dataType('decrement', $amount);
+		$this->dataStorage[$field] = $this->dataType('decrement', $amount);
 	}
 
 
