@@ -178,7 +178,14 @@ class parseRestClient{
 		//TODO: Need to also check for response for a correct result from parse.com
 		if(!in_array($responseCode,$expectedCode)){
 			$error = json_decode($response);
-			$this->throwError($error->error,$error->code);
+            if (isset($error->error))
+            {
+                $this->throwError($error->error,$error->code);
+            }
+            else{
+                $this->throwError('No response',404);
+            }
+
 		}
 		else{
 			//check for empty return
